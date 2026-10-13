@@ -4,5 +4,12 @@
   "question_count": 7,
   "question_document": "questions.md",
   "solution_document": "solutions.md",
-  "sources": ["dsd2023.v", "tb_2023.v"]
+  "sources": [
+    "dsd2023.v",
+    "tb_2023.v"
+  ],
+  "question_latex": "questions.tex",
+  "original_exam": "original.pdf",
+  "original_filename": "Final-Exam-2023.pdf",
+  "original_sha256": "5754ac6887ed08956fb8ef94c8e7bac7f86bbb1c32c893fd68c1c2d6058e79e7"
 }

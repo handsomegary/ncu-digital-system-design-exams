@@ -15,8 +15,11 @@ def generated():
     for folder in folders:
         metadata=json.loads((folder/'metadata.json').read_text(encoding='utf-8'))
         question=folder/metadata['question_document']
+        question_latex=folder/metadata['question_latex']
+        original_exam=folder/metadata['original_exam']
         document=folder/metadata['solution_document']
         assert question.is_file(), f'Missing questions: {folder.name}'
+        assert question_latex.is_file() and original_exam.is_file(), f'Missing original/LaTeX: {folder.name}'
         assert metadata['question_count']>0, 'Do not retain answer-only years'
         text=document.read_text(encoding='utf-8')
         assert text.count(BEGIN)==text.count(END)==1, f'Missing/duplicate markers: {document}'
@@ -34,6 +37,8 @@ def generated():
         writes[document]=before+BEGIN+'\n\n'+'\n'.join(code)+'\n'+END+after
         index.append({'year':metadata['year'],'exam':metadata['exam'],'question_count':metadata['question_count'],
                       'questions':question.relative_to(ROOT).as_posix(),
+                      'question_latex':question_latex.relative_to(ROOT).as_posix(),
+                      'original_exam':original_exam.relative_to(ROOT).as_posix(),
                       'solutions':document.relative_to(ROOT).as_posix(),
                       'sources':[(folder/name).relative_to(ROOT).as_posix() for name in declared]})
     assert index, 'No retained questions'

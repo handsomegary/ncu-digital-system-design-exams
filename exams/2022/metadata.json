@@ -4,8 +4,28 @@
   "question_count": 7,
   "question_document": "questions.md",
   "solution_document": "solutions.md",
-  "sources": ["design.v", "tb.v"],
-  "modules": ["EnCounter", "Rotator", "RegisterFile", "PatternCheck", "MaskPatternCheck", "PatternCount", "PatternPosition"],
+  "sources": [
+    "design.v",
+    "tb.v"
+  ],
+  "modules": [
+    "EnCounter",
+    "Rotator",
+    "RegisterFile",
+    "PatternCheck",
+    "MaskPatternCheck",
+    "PatternCount",
+    "PatternPosition"
+  ],
   "status": "complete",
-  "clarifications": ["Rout uses the printed module declaration", "read-first memory collision", "valid item rank for position", "Load starts a new count sequence"]
+  "clarifications": [
+    "Rout uses the printed module declaration",
+    "read-first memory collision",
+    "valid item rank for position",
+    "Load starts a new count sequence"
+  ],
+  "question_latex": "questions.tex",
+  "original_exam": "original.pdf",
+  "original_filename": "Final-Exam-2022.pdf",
+  "original_sha256": "cb1af7b69b144817003312933a96bba44d8954c6f298b26f549ddd75411e2b49"
 }

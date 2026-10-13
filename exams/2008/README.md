@@ -1,5 +1,7 @@
 # 2008 春季期中考：數位系統設計
 
+題目來源：[原始 PDF](original.pdf)、[可編輯 LaTeX](questions.tex)、[中文題目](questions.md)。
+
 這份來源雖然檔名含 Final 與 Answer，卷首實際標示 **Spring 2008 Midterm**。前兩頁保留可辨識的題面，後三頁是第 1 題的手寫參考作答。
 
 - [questions.md](questions.md)：第 1、2 題的繁中重寫題面，共 4 個小題，包含重新繪製的狀態圖。

@@ -1,5 +1,7 @@
 # 2022 期末考
 
+題目來源：[原始 PDF](original.pdf)、[可編輯 LaTeX](questions.tex)、[中文題目](questions.md)。
+
 [題目](questions.md) · [詳解與完整程式](solutions.md)
 
 七題均有完整題面。涵蓋致能計數器、左旋、同步暫存器檔、完整／遮罩比對、出現次數及最後位置。

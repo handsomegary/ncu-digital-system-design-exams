@@ -1,0 +1,15 @@
+{
+  "year": 2024,
+  "exam": "final",
+  "question_count": 6,
+  "question_document": "questions.md",
+  "solution_document": "solutions.md",
+  "sources": [
+    "design.v",
+    "tb.v"
+  ],
+  "question_latex": "questions.tex",
+  "original_exam": "original.pdf",
+  "original_filename": "FinalExam.pdf",
+  "original_sha256": "507ea43ad45c6508001cc9e0fcdd25632f8ffb02756fb970bd4814f06b1d78d8"
+}

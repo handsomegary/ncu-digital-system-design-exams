@@ -1,5 +1,6 @@
 """Check the public question/solution index and compile the code extracted from the answers."""
 import json
+import hashlib
 import os
 from pathlib import Path
 import re
@@ -11,13 +12,18 @@ ROOT=Path(__file__).resolve().parents[1]
 
 def main():
     book=json.loads((ROOT/'index.json').read_text(encoding='utf-8'))
-    assert len(book['exams'])==4 and book['question_count']==21, 'Retained scope changed; update the documented inventory'
+    assert len(book['exams'])==5 and book['question_count']==27, 'Retained scope changed; update the documented inventory'
     count=0
     with tempfile.TemporaryDirectory(prefix='dsd_book_') as name:
         temporary=Path(name)
         for entry in book['exams']:
             questions=(ROOT/entry['questions']).read_text(encoding='utf-8')
             assert questions.strip(), 'No question text'
+            latex=ROOT/entry['question_latex']
+            assert latex.is_file() and '\\begin{document}' in latex.read_text(encoding='utf-8'), 'Missing editable LaTeX'
+            original=ROOT/entry['original_exam']
+            metadata=json.loads((original.parent/'metadata.json').read_text(encoding='utf-8'))
+            assert hashlib.sha256(original.read_bytes()).hexdigest()==metadata['original_sha256'], 'Original source PDF changed'
             answer=(ROOT/entry['solutions']).read_text(encoding='utf-8')
             code=answer.split('<!-- SOLUTION_CODE_BEGIN -->')[1].split('<!-- SOLUTION_CODE_END -->')[0]
             blocks=dict(re.findall(r'### `([^`]+)`\s+```\w+\n(.*?)\n```',code,re.S))
@@ -36,11 +42,12 @@ def main():
                 count+=1
             result=subprocess.run([os.environ.get('IVERILOG','iverilog'),'-g2012','-Wall','-t','null',*map(str,files)],cwd=folder,text=True,capture_output=True,timeout=60)
             assert result.returncode==0, result.stdout+result.stderr
+    originals={entry['original_exam'] for entry in book['exams']}
     forbidden={'.vcd','.fst','.lxt','.lxt2','.vvp','.pdf','.png','.jpg','.jpeg','.zip'}
     public=subprocess.check_output(['git','ls-files'],cwd=ROOT,text=True).splitlines()
-    assert not [p for p in public if Path(p).suffix.lower() in forbidden], 'Generated artifacts in repo'
-    assert all(not (ROOT/p).is_file() or (ROOT/p).stat().st_size<300000 for p in public), 'Unexpected large public file'
-    print(f'PASS: 4 question sets, 21 questions, {count} complete embedded source files; no wave/image artifacts')
+    assert not [p for p in public if Path(p).suffix.lower() in forbidden and p not in originals], 'Generated artifacts in repo'
+    assert all(not (ROOT/p).is_file() or (ROOT/p).stat().st_size<(2000000 if p in originals else 300000) for p in public), 'Unexpected large public file'
+    print(f'PASS: 5 question sets, 27 questions, {count} complete embedded source files; 5 verified original PDFs and LaTeX transcriptions; no generated wave/image artifacts')
 
 
 if __name__=='__main__': main()

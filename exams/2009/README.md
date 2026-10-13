@@ -1,5 +1,7 @@
 # 2009 期末考
 
+題目來源：[原始 PDF](original.pdf)、[可編輯 LaTeX](questions.tex)、[中文題目](questions.md)。
+
 納入五大題、九個作答項目，包含錯誤修正、latch／三態判斷、四個 16 位元模組、資料路徑與原時序刺激。完整繁中題面見 [questions.md](questions.md)，逐題詳解及完整 RTL／testbench 見 [solutions.md](solutions.md)。原卷年份／日期、未指定極性及初始化的採用規則均明列。
 
 在儲存庫根目錄執行：

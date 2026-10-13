@@ -8,7 +8,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        suite: [test_2008.py, test_2009.py, test_2022.py, test_2023.py, test_book.py]
+        suite: [test_2008.py, test_2009.py, test_2022.py, test_2023.py, test_2024.py, test_book.py]
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7

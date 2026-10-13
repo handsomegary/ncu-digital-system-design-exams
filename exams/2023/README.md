@@ -1,5 +1,7 @@
 # 2023：數位系統設計與實作期末考
 
+題目來源：[原始 PDF](original.pdf)、[可編輯 LaTeX](questions.tex)、[中文題目](questions.md)。
+
 共 7 題、100 分。四頁題面的圖已轉成格子配置與簡短文字時序表，可直接閱讀，不必另找原 PDF。
 
 - [完整題目、介面與時序](questions.md)

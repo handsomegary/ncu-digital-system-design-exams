@@ -10,6 +10,7 @@ build/
 *.out
 *.exe
 *.pdf
+!exams/*/original.pdf
 *.png
 *.jpg
 *.jpeg

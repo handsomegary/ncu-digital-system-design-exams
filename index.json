@@ -1,11 +1,13 @@
 {
-  "question_count": 21,
+  "question_count": 27,
   "exams": [
     {
       "year": 2008,
       "exam": "Spring 2008 Midterm",
       "question_count": 2,
       "questions": "exams/2008/questions.md",
+      "question_latex": "exams/2008/questions.tex",
+      "original_exam": "exams/2008/original.pdf",
       "solutions": "exams/2008/solutions.md",
       "sources": [
         "exams/2008/design.v",
@@ -18,6 +20,8 @@
       "exam": "期末考",
       "question_count": 5,
       "questions": "exams/2009/questions.md",
+      "question_latex": "exams/2009/questions.tex",
+      "original_exam": "exams/2009/original.pdf",
       "solutions": "exams/2009/solutions.md",
       "sources": [
         "exams/2009/design.v",
@@ -30,6 +34,8 @@
       "exam": "final",
       "question_count": 7,
       "questions": "exams/2022/questions.md",
+      "question_latex": "exams/2022/questions.tex",
+      "original_exam": "exams/2022/original.pdf",
       "solutions": "exams/2022/solutions.md",
       "sources": [
         "exams/2022/design.v",
@@ -41,10 +47,25 @@
       "exam": "final",
       "question_count": 7,
       "questions": "exams/2023/questions.md",
+      "question_latex": "exams/2023/questions.tex",
+      "original_exam": "exams/2023/original.pdf",
       "solutions": "exams/2023/solutions.md",
       "sources": [
         "exams/2023/dsd2023.v",
         "exams/2023/tb_2023.v"
+      ]
+    },
+    {
+      "year": 2024,
+      "exam": "final",
+      "question_count": 6,
+      "questions": "exams/2024/questions.md",
+      "question_latex": "exams/2024/questions.tex",
+      "original_exam": "exams/2024/original.pdf",
+      "solutions": "exams/2024/solutions.md",
+      "sources": [
+        "exams/2024/design.v",
+        "exams/2024/tb.v"
       ]
     }
   ]
