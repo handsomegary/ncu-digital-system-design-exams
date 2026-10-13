@@ -1,0 +1,8 @@
+{
+  "year": 2009,
+  "exam": "期末考",
+  "question_count": 5,
+  "question_document": "questions.md",
+  "solution_document": "solutions.md",
+  "sources": ["design.v", "tb_units.v", "tb_waveform.v"]
+}

@@ -1,0 +1,23 @@
+{
+  "year": 2008,
+  "exam": "Spring 2008 Midterm",
+  "question_count": 2,
+  "question_document": "questions.md",
+  "solution_document": "solutions.md",
+  "sources": ["design.v", "tb.v", "model.py"],
+  "retained_questions": ["Q1", "Q2"],
+  "excluded_questions": [
+    {
+      "id": "Q3",
+      "reason": "題幹中的 Fig. 2 被裁切，接線、正反器與時脈相關圖形不完整；無法唯一決定時序路徑，因此不納入或補造答案。"
+    }
+  ],
+  "source_classification": {
+    "filename": "Final-Exam-2008-Answer.pdf",
+    "printed_title": "Digital System Design, Spring 2008 Midterm",
+    "pdf_pages": 5,
+    "question_pages": [1, 2],
+    "answer_pages": [3, 4, 5],
+    "note": "檔名與卷首考試類型不同，以可辨識的卷首及題面為準；原始掃描與個人資料不收錄。"
+  }
+}

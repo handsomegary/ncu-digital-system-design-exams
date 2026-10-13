@@ -1,0 +1,11 @@
+{
+  "year": 2022,
+  "exam": "final",
+  "question_count": 7,
+  "question_document": "questions.md",
+  "solution_document": "solutions.md",
+  "sources": ["design.v", "tb.v"],
+  "modules": ["EnCounter", "Rotator", "RegisterFile", "PatternCheck", "MaskPatternCheck", "PatternCount", "PatternPosition"],
+  "status": "complete",
+  "clarifications": ["Rout uses the printed module declaration", "read-first memory collision", "valid item rank for position", "Load starts a new count sequence"]
+}

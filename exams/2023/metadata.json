@@ -1,0 +1,8 @@
+{
+  "year": 2023,
+  "exam": "final",
+  "question_count": 7,
+  "question_document": "questions.md",
+  "solution_document": "solutions.md",
+  "sources": ["dsd2023.v", "tb_2023.v"]
+}

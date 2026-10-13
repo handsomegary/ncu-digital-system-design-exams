@@ -1,0 +1,51 @@
+{
+  "question_count": 21,
+  "exams": [
+    {
+      "year": 2008,
+      "exam": "Spring 2008 Midterm",
+      "question_count": 2,
+      "questions": "exams/2008/questions.md",
+      "solutions": "exams/2008/solutions.md",
+      "sources": [
+        "exams/2008/design.v",
+        "exams/2008/tb.v",
+        "exams/2008/model.py"
+      ]
+    },
+    {
+      "year": 2009,
+      "exam": "期末考",
+      "question_count": 5,
+      "questions": "exams/2009/questions.md",
+      "solutions": "exams/2009/solutions.md",
+      "sources": [
+        "exams/2009/design.v",
+        "exams/2009/tb_units.v",
+        "exams/2009/tb_waveform.v"
+      ]
+    },
+    {
+      "year": 2022,
+      "exam": "final",
+      "question_count": 7,
+      "questions": "exams/2022/questions.md",
+      "solutions": "exams/2022/solutions.md",
+      "sources": [
+        "exams/2022/design.v",
+        "exams/2022/tb.v"
+      ]
+    },
+    {
+      "year": 2023,
+      "exam": "final",
+      "question_count": 7,
+      "questions": "exams/2023/questions.md",
+      "solutions": "exams/2023/solutions.md",
+      "sources": [
+        "exams/2023/dsd2023.v",
+        "exams/2023/tb_2023.v"
+      ]
+    }
+  ]
+}
