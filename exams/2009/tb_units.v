@@ -152,6 +152,6 @@ module tb_units;
             checked = checked + 2;
         end
         $display("PASS units checks=%0d", checked);
-        $finish;
+        $finish(0);
     end
 endmodule

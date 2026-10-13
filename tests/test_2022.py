@@ -122,7 +122,7 @@ PatternPosition Position(PData,PValid,Clk,Reset);
 task tick; begin #4; Clk=1; #1; Clk=0; #5; end endtask
 initial begin
 '''
-    return declarations+'\n'.join(statements)+f'\n$display("PASS 2022: {checks} independent HDL checks"); $finish;\nend\nendmodule\n',checks
+    return declarations+'\n'.join(statements)+f'\n$display("PASS 2022: {checks} independent HDL checks"); $finish(0);\nend\nendmodule\n',checks
 
 
 def main():

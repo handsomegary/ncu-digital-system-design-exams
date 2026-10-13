@@ -27,7 +27,7 @@ module tb_waveform;
         #20 Sel2 <= 0; Sel3 <= 0; Mode <= 2'b01; MyInput <= 16'h0055;
         #20 Sel1 <= 0; LorR <= 1; Mode <= 2'b10; MyInput <= 16'h008c;
         #20 Mode <= 2'b11; MyInput <= 16'h00ff;
-        #24 $finish;
+        #24 $finish(0);
     end
 
     task check;

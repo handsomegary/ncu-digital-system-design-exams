@@ -111,6 +111,6 @@ module tb_2008;
             $fatal(1, "Reset after active operation failed");
         checks = checks + 1;
         $display("PASS 2008: %0d checks", checks);
-        $finish;
+        $finish(0);
     end
 endmodule

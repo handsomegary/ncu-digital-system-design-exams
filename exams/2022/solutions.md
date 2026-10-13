@@ -210,7 +210,7 @@ module tb_2022;
         @(negedge Clk); ValidIn=0;
         if(Count.U1.mem[4] !== 10'd2) $fatal(1,"invalid input counted or final update lost");
         $display("PASS 2022 example: U1.mem[4]=2");
-        $finish;
+        $finish(0);
     end
 endmodule
 ```

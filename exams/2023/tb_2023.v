@@ -208,7 +208,7 @@ module tb_2023;
         for (j = 0; j < 4; j = j + 1) begin tick; tock; end
         $display("MAX_UNKNOWN %0d %0d %0d %0d", max_value, max_x, max_y, max_valid);
         $display("DONE");
-        $finish;
+        $finish(0);
     end
 endmodule
 `default_nettype wire
