@@ -14,7 +14,7 @@ def bench_text():
     def expect(signal, value, width=10):
         nonlocal checks
         checks += 1
-        statements.append(f'if ({signal} !== {width}\'d{value}) $fatal(1,"check {checks}: {signal}");')
+        statements.append(f'if ({signal} !== {width}\'d{value}) $fatal(1,"check {checks}: {signal} got %0h expected %0h", {signal}, {width}\'d{value});')
     def step(): statements.append('tick;')
     # Reset must act independently of a clock edge.
     statements += ['Reset=1; #1;']
@@ -108,7 +108,8 @@ module tb;
 reg Clk=0, Reset=0, En=0;
 wire [9:0] CounterOut;
 EnCounter Counter(CounterOut,Clk,Reset,En);
-reg [3:0] RIn=0; reg [1:0] Rb=0; wire [3:0] Rout;
+// The first vector must create an input event for the Verilog always @* block.
+reg [3:0] RIn; reg [1:0] Rb; wire [3:0] Rout;
 Rotator Rotate(Rout,RIn,Rb);
 reg [9:0] D=0; reg WE=0; reg [2:0] Add=0; wire [9:0] Q;
 RegisterFile File(Q,D,Clk,WE,Add);
