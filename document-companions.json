@@ -16,8 +16,11 @@
         "sha256": "8d48e1455fb94f7c27d5fbbdb61db9d07d82a1645910241d5ffe3bf30c2ebace"
       },
       "original_document": {
-        "status": "not_included_by_repository_scope",
-        "transcription": "exams/2008/questions.tex"
+        "status": "original_source_unavailable",
+        "source_filename": "Final-Exam-2008-Answer.pdf",
+        "transcription": "exams/2008/questions.tex",
+        "reason": "The original scan was omitted previously. It is no longer present in the supplied Downloads location or available Codex copies; this expanded archive review cannot restore its original bytes.",
+        "known_source_pages": 5
       },
       "scan_note": "Only complete Q1/Q2 are covered. Cropped Q3 circuit is excluded, not reconstructed as an original attachment. No external companion file is required by the included question transcription."
     },
@@ -226,5 +229,33 @@
       "limitation": "The rewritten complete RTL is supplied and runs independently, but cannot establish byte-exact compatibility with unavailable template declarations. It is not labelled the original DSD.v."
     }
   ],
-  "provided_original_external_companion_count": 0
+  "provided_original_external_companion_count": 0,
+  "preservation_review": {
+    "review_date": "2026-10-14",
+    "scope": "Retain all supplied original noncompiled source, data, documents and attachments, including materials unused by the finished implementation.",
+    "excluded": [
+      "student-generated compiled artifacts",
+      "regenerable build and IDE caches"
+    ],
+    "privacy": "Student identity-bearing material requires explicitly labelled anonymous preservation.",
+    "original_materials_complete": false,
+    "preserved_original_pdfs": 4,
+    "unavailable_original_documents": [
+      {
+        "year": 2008,
+        "name": "Final-Exam-2008-Answer.pdf"
+      }
+    ],
+    "unavailable_original_companions": [
+      {
+        "year": 2023,
+        "name": "DSD.v"
+      },
+      {
+        "year": 2024,
+        "name": "DSD.v"
+      }
+    ],
+    "search_scope": "The five originally supplied Downloads PDF paths, local Codex copies and repository history; a source PDF for 2008 is unavailable. Original DSD.v templates were not supplied."
+  }
 }

@@ -31,7 +31,8 @@ def main():
                 require(1 <= reference["page"] <= document["pages"], "Reference page is outside document")
                 require(reference["status"] in ("not_provided", "student_submission_requirement"), "Unresolved reference")
         else:
-            require(document["status"] == "not_included_by_repository_scope", "Unexplained original PDF omission")
+            require(document["status"] == "original_source_unavailable", "Unexplained original PDF omission")
+            require(document["reason"] and document["source_filename"], "Missing original PDF availability evidence")
             file_path(document["transcription"])
         transcription = exam["question_transcription"]
         require(hashlib.sha256(file_path(transcription["path"]).read_bytes()).hexdigest() == transcription["sha256"], "Question transcription hash differs")
@@ -50,7 +51,12 @@ def main():
             require(len(generated["files"]) == 8, "Incomplete 2023 stimulus inventory")
     require(gaps == manifest["unavailable"], "Missing-template inventory differs")
     require([(row["year"], row["name"]) for row in gaps] == [(2023, "DSD.v"), (2024, "DSD.v")], "Expected explicit declarations of both missing original templates")
+    preservation = manifest["preservation_review"]
+    require(preservation["original_materials_complete"] is False, "Unavailable originals cannot be labelled complete")
+    require(preservation["unavailable_original_documents"] == [{"year": 2008, "name": "Final-Exam-2008-Answer.pdf"}], "Missing 2008 original scan declaration")
+    require(preservation["unavailable_original_companions"] == [{"year": row["year"], "name": row["name"]} for row in gaps], "Preservation gap inventory differs")
     print("PASS original integrity: four original PDFs, five question transcriptions and all runnable source paths.")
+    print("NOT AVAILABLE: 2008 / Final-Exam-2008-Answer.pdf (original scan)")
     for row in gaps:
         print("NOT PROVIDED: " + str(row["year"]) + " / " + row["name"] + " (original instructor template)")
 
