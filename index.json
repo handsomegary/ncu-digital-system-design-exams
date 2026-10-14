@@ -7,7 +7,6 @@
       "question_count": 2,
       "questions": "exams/2008/questions.md",
       "question_latex": "exams/2008/questions.tex",
-      "original_exam": "exams/2008/original.pdf",
       "solutions": "exams/2008/solutions.md",
       "sources": [
         "exams/2008/design.v",
@@ -21,7 +20,7 @@
       "question_count": 5,
       "questions": "exams/2009/questions.md",
       "question_latex": "exams/2009/questions.tex",
-      "original_exam": "exams/2009/original.pdf",
+      "original_exam": "exams/2009/Final-Exam-2009.pdf",
       "solutions": "exams/2009/solutions.md",
       "sources": [
         "exams/2009/design.v",

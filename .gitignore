@@ -11,6 +11,7 @@ build/
 *.exe
 *.pdf
 !exams/*/original.pdf
+!exams/2009/Final-Exam-2009.pdf
 *.png
 *.jpg
 *.jpeg

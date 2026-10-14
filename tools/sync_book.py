@@ -16,10 +16,12 @@ def generated():
         metadata=json.loads((folder/'metadata.json').read_text(encoding='utf-8'))
         question=folder/metadata['question_document']
         question_latex=folder/metadata['question_latex']
-        original_exam=folder/metadata['original_exam']
+        original_name=metadata.get('original_exam')
+        original_exam=folder/original_name if original_name else None
         document=folder/metadata['solution_document']
         assert question.is_file(), f'Missing questions: {folder.name}'
-        assert question_latex.is_file() and original_exam.is_file(), f'Missing original/LaTeX: {folder.name}'
+        assert question_latex.is_file(), f'Missing LaTeX: {folder.name}'
+        assert original_exam is None or original_exam.is_file(), f'Missing original PDF: {folder.name}'
         assert metadata['question_count']>0, 'Do not retain answer-only years'
         text=document.read_text(encoding='utf-8')
         assert text.count(BEGIN)==text.count(END)==1, f'Missing/duplicate markers: {document}'
@@ -38,7 +40,7 @@ def generated():
         index.append({'year':metadata['year'],'exam':metadata['exam'],'question_count':metadata['question_count'],
                       'questions':question.relative_to(ROOT).as_posix(),
                       'question_latex':question_latex.relative_to(ROOT).as_posix(),
-                      'original_exam':original_exam.relative_to(ROOT).as_posix(),
+                      **({'original_exam':original_exam.relative_to(ROOT).as_posix()} if original_exam else {}),
                       'solutions':document.relative_to(ROOT).as_posix(),
                       'sources':[(folder/name).relative_to(ROOT).as_posix() for name in declared]})
     assert index, 'No retained questions'

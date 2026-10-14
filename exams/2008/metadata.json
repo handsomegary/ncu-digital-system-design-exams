@@ -35,7 +35,6 @@
     "note": "檔名與卷首考試類型不同，以可辨識的卷首及題面為準；原始掃描與個人資料不收錄。"
   },
   "question_latex": "questions.tex",
-  "original_exam": "original.pdf",
   "original_filename": "Final-Exam-2008-Answer.pdf",
-  "original_sha256": "284de2501b3b1b9ba475a8e988255b6769065a14f5b22f30ebef7bc3027686a2"
+  "original_pdf_omitted": "依使用者要求，不收錄2008原始掃描PDF；保留原檔名稱與文字轉錄來源說明。"
 }
