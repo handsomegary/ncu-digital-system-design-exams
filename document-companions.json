@@ -232,8 +232,9 @@
   "provided_original_external_companion_count": 0,
   "preservation_review": {
     "review_date": "2026-10-14",
-    "scope": "Retain all supplied original noncompiled source, data, documents and attachments, including materials unused by the finished implementation.",
+    "scope": "Retain supplied original noncompiled source, data and attachments, including materials unused by the finished implementation. Instruction documents retain only the latest version per course year, assignment and document type.",
     "excluded": [
+      "superseded instruction document versions",
       "student-generated compiled artifacts",
       "regenerable build and IDE caches"
     ],
@@ -256,6 +257,7 @@
         "name": "DSD.v"
       }
     ],
-    "search_scope": "The five originally supplied Downloads PDF paths, local Codex copies and repository history; a source PDF for 2008 is unavailable. Original DSD.v templates were not supplied."
+    "search_scope": "The five originally supplied Downloads PDF paths, local Codex copies and repository history; a source PDF for 2008 is unavailable. Original DSD.v templates were not supplied.",
+    "instruction_version_policy": "latest_only_per_course_year_assignment_and_document_type"
   }
 }
