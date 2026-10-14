@@ -1,9 +1,11 @@
 """Independent word-memory, coordinate and sliding-window oracles for the 2023 RTL.
 
-Stimulus, simulation output and compiled HDL exist only in a temporary directory.
+Stimulus, simulation output and compiled HDL use a temporary directory by default,
+or a new retained directory explicitly selected with --work-dir.
 No waveform/VCD files are generated.
 """
 import argparse
+import json
 import os
 from pathlib import Path
 import random
@@ -184,12 +186,44 @@ def verify_output(output, expected):
     return len(expected) + sum(unknown_counts.values()) + len(events) - 1
 
 
+def run_simulation(folder, args, memory, vectors, expected):
+    """Write real stimulus and keep the compiler/simulator output in folder."""
+    (folder / "memory.hex").write_text("\n".join(f"{value:02x}" for value in memory) + "\n", encoding="ascii")
+    for name, rows in vectors.items():
+        (folder / (name + "_vectors.txt")).write_text("\n".join(" ".join(map(str, row)) for row in rows) + "\n", encoding="ascii")
+    executable = folder / "simulation.vvp"
+    command = [args.iverilog, "-g2012", "-Wall", "-s", "tb_2023", "-o", str(executable),
+               str(FOLDER / "dsd2023.v"), str(FOLDER / "tb_2023.v")]
+    (folder / "commands.json").write_text(json.dumps({"compile": command,
+        "simulate": [args.vvp, str(executable)], "simulation_cwd": str(folder)}, indent=2) + "\n", encoding="utf-8")
+    result = subprocess.run(command, text=True, capture_output=True, timeout=60)
+    (folder / "compile.stdout.txt").write_text(result.stdout, encoding="utf-8")
+    (folder / "compile.stderr.txt").write_text(result.stderr, encoding="utf-8")
+    assert result.returncode == 0, result.stdout + result.stderr
+    result = subprocess.run([args.vvp, str(executable)], cwd=folder, text=True, capture_output=True, timeout=60)
+    (folder / "actual.log").write_text(result.stdout, encoding="utf-8")
+    (folder / "actual.stderr.txt").write_text(result.stderr, encoding="utf-8")
+    summary = {"simulator_returncode": result.returncode, "passed": False, "observations": 0}
+    try:
+        assert result.returncode == 0 and not result.stderr, result.stdout + result.stderr
+        summary["observations"] = verify_output(result.stdout, expected)
+        summary["passed"] = True
+    finally:
+        (folder / "summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
+    return summary["observations"]
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--iverilog", default=os.environ.get("IVERILOG", "iverilog"))
     parser.add_argument("--vvp", default=os.environ.get("VVP", "vvp"))
     parser.add_argument("--model-only", action="store_true", help="Audit golden stimulus without claiming HDL simulation")
+    parser.add_argument("--work-dir", type=Path, help="New directory to retain stimulus, executable, actual logs and summary")
     args = parser.parse_args()
+    if args.model_only and args.work_dir:
+        parser.error("--work-dir requires real HDL simulation; do not combine it with --model-only")
+    if args.work_dir and args.work_dir.exists():
+        parser.error("--work-dir already exists; choose a new directory")
     memory, vectors = fixture()
     expected = expected_records(memory, vectors)
     if args.model_only:
@@ -197,19 +231,14 @@ def main():
         return
     if not shutil.which(args.iverilog) or not shutil.which(args.vvp):
         raise RuntimeError("Install Icarus Verilog (iverilog and vvp); CI installs it automatically.")
-    with tempfile.TemporaryDirectory(prefix="dsd2023_") as temporary:
-        folder = Path(temporary)
-        (folder / "memory.hex").write_text("\n".join(f"{value:02x}" for value in memory) + "\n", encoding="ascii")
-        for name, rows in vectors.items():
-            (folder / (name + "_vectors.txt")).write_text("\n".join(" ".join(map(str, row)) for row in rows) + "\n", encoding="ascii")
-        executable = folder / "simulation.vvp"
-        result = subprocess.run([args.iverilog, "-g2012", "-Wall", "-s", "tb_2023", "-o", str(executable),
-                                 str(FOLDER / "dsd2023.v"), str(FOLDER / "tb_2023.v")],
-                                text=True, capture_output=True, timeout=60)
-        assert result.returncode == 0, result.stdout + result.stderr
-        result = subprocess.run([args.vvp, str(executable)], cwd=folder, text=True, capture_output=True, timeout=60)
-        assert result.returncode == 0 and not result.stderr, result.stdout + result.stderr
-        count = verify_output(result.stdout, expected)
+    if args.work_dir:
+        folder = args.work_dir.resolve()
+        folder.mkdir(parents=True)
+        count = run_simulation(folder, args, memory, vectors, expected)
+        print("Saved inputs and actual simulator output to " + str(folder))
+    else:
+        with tempfile.TemporaryDirectory(prefix="dsd2023_") as temporary:
+            count = run_simulation(Path(temporary), args, memory, vectors, expected)
     print(f"PASS 2023: all 7 modules, {count} independent observations; fourth-edge validity, pauses, X/Z and capacity boundaries.")
 
 

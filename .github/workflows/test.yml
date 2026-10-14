@@ -19,4 +19,6 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y -qq iverilog
       - run: python tools/sync_book.py --check
+      - if: matrix.suite == 'test_book.py'
+        run: python tools/check_document_companions.py
       - run: python tests/${{ matrix.suite }}

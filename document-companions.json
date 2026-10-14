@@ -1,0 +1,230 @@
+{
+  "schema_version": 1,
+  "scope": "Original exam attachment references; rewritten runnable RTL and generated stimuli are classified separately.",
+  "exams": [
+    {
+      "year": 2008,
+      "implemented_sources": [
+        "exams/2008/design.v",
+        "exams/2008/tb.v",
+        "exams/2008/model.py"
+      ],
+      "original_companions": [],
+      "file_references": [],
+      "question_transcription": {
+        "path": "exams/2008/questions.tex",
+        "sha256": "8d48e1455fb94f7c27d5fbbdb61db9d07d82a1645910241d5ffe3bf30c2ebace"
+      },
+      "original_document": {
+        "status": "not_included_by_repository_scope",
+        "transcription": "exams/2008/questions.tex"
+      },
+      "scan_note": "Only complete Q1/Q2 are covered. Cropped Q3 circuit is excluded, not reconstructed as an original attachment. No external companion file is required by the included question transcription."
+    },
+    {
+      "year": 2009,
+      "implemented_sources": [
+        "exams/2009/design.v",
+        "exams/2009/tb_units.v",
+        "exams/2009/tb_waveform.v"
+      ],
+      "original_companions": [],
+      "file_references": [],
+      "question_transcription": {
+        "path": "exams/2009/questions.tex",
+        "sha256": "6d194cf0dca1450ccb32413a8980af5d02ab3b7cb29be21c1fde87ee7af488df"
+      },
+      "original_document": {
+        "path": "exams/2009/Final-Exam-2009.pdf",
+        "pages": 2,
+        "sha256": "16b740ac31dcaadaa6bf6695a17cc52da13516b621c180a0a7baaedb4babba66"
+      },
+      "scan_note": "Both scanned PDF pages were rendered and visually inspected. No external companion input/template file is specified; Q5 stimulus is the timing diagram embedded on page 2."
+    },
+    {
+      "year": 2022,
+      "implemented_sources": [
+        "exams/2022/design.v",
+        "exams/2022/tb.v"
+      ],
+      "original_companions": [],
+      "file_references": [
+        {
+          "page": 1,
+          "name": "student_submission_name",
+          "status": "student_submission_requirement"
+        },
+        {
+          "page": 1,
+          "name": "student_submission_name",
+          "status": "student_submission_requirement"
+        },
+        {
+          "page": 1,
+          "name": "student_submission_name",
+          "status": "student_submission_requirement"
+        }
+      ],
+      "question_transcription": {
+        "path": "exams/2022/questions.tex",
+        "sha256": "d63b7609317fb5c094a40ba4de6c1e6d8fa336091c731260aca3b50e132925cd"
+      },
+      "original_document": {
+        "path": "exams/2022/original.pdf",
+        "pages": 3,
+        "sha256": "cb1af7b69b144817003312933a96bba44d8954c6f298b26f549ddd75411e2b49"
+      }
+    },
+    {
+      "year": 2023,
+      "implemented_sources": [
+        "exams/2023/dsd2023.v",
+        "exams/2023/tb_2023.v"
+      ],
+      "original_companions": [
+        {
+          "year": 2023,
+          "name": "DSD.v",
+          "status": "not_provided",
+          "purpose": "Original instructor template containing required question I/O declarations.",
+          "instruction_reference": {
+            "document": "exams/2023/original.pdf",
+            "page": 1,
+            "quote": "Please download the template file DSD.v"
+          },
+          "search_scope": "Provided local Downloads bundle; no DSD.v file was supplied/found.",
+          "limitation": "The rewritten complete RTL is supplied and runs independently, but cannot establish byte-exact compatibility with unavailable template declarations. It is not labelled the original DSD.v."
+        }
+      ],
+      "file_references": [
+        {
+          "page": 1,
+          "name": "DSD.v",
+          "status": "not_provided"
+        },
+        {
+          "page": 1,
+          "name": "student_submission_name",
+          "status": "student_submission_requirement"
+        },
+        {
+          "page": 1,
+          "name": "student_submission_name",
+          "status": "student_submission_requirement"
+        },
+        {
+          "page": 1,
+          "name": "student_submission_name",
+          "status": "student_submission_requirement"
+        }
+      ],
+      "question_transcription": {
+        "path": "exams/2023/questions.tex",
+        "sha256": "83893b39b52716b07a366e868c90907b8d1b2ed2a54b51e702160cb63a30f3e0"
+      },
+      "original_document": {
+        "path": "exams/2023/original.pdf",
+        "pages": 4,
+        "sha256": "5754ac6887ed08956fb8ef94c8e7bac7f86bbb1c32c893fd68c1c2d6058e79e7"
+      },
+      "generated_simulation_inputs": {
+        "role": "repository_generated_test_stimulus_not_original_attachment",
+        "generator": "tests/test_2023.py",
+        "command": "python tests/test_2023.py --work-dir simulation/2023",
+        "files": [
+          "memory.hex",
+          "rotator_vectors.txt",
+          "row_vectors.txt",
+          "pattern_vectors.txt",
+          "rf_vectors.txt",
+          "count_vectors.txt",
+          "fetch_vectors.txt",
+          "max_vectors.txt"
+        ],
+        "note": "Complete deterministic generator is included. Generated vectors do not substitute for the missing instructor DSD.v template."
+      }
+    },
+    {
+      "year": 2024,
+      "implemented_sources": [
+        "exams/2024/design.v",
+        "exams/2024/tb.v"
+      ],
+      "original_companions": [
+        {
+          "year": 2024,
+          "name": "DSD.v",
+          "status": "not_provided",
+          "purpose": "Original instructor template containing required question I/O declarations.",
+          "instruction_reference": {
+            "document": "exams/2024/original.pdf",
+            "page": 1,
+            "quote": "Please download the template file DSD.v"
+          },
+          "search_scope": "Provided local Downloads bundle; no DSD.v file was supplied/found.",
+          "limitation": "The rewritten complete RTL is supplied and runs independently, but cannot establish byte-exact compatibility with unavailable template declarations. It is not labelled the original DSD.v."
+        }
+      ],
+      "file_references": [
+        {
+          "page": 1,
+          "name": "DSD.v",
+          "status": "not_provided"
+        },
+        {
+          "page": 1,
+          "name": "student_submission_name",
+          "status": "student_submission_requirement"
+        },
+        {
+          "page": 1,
+          "name": "student_submission_name",
+          "status": "student_submission_requirement"
+        },
+        {
+          "page": 1,
+          "name": "student_submission_name",
+          "status": "student_submission_requirement"
+        }
+      ],
+      "question_transcription": {
+        "path": "exams/2024/questions.tex",
+        "sha256": "3c43f3c3bac748130b933f1012afb02968a7dd8413e78fe95b1e2d1995eccdcc"
+      },
+      "original_document": {
+        "path": "exams/2024/original.pdf",
+        "pages": 4,
+        "sha256": "507ea43ad45c6508001cc9e0fcdd25632f8ffb02756fb970bd4814f06b1d78d8"
+      }
+    }
+  ],
+  "unavailable": [
+    {
+      "year": 2023,
+      "name": "DSD.v",
+      "status": "not_provided",
+      "purpose": "Original instructor template containing required question I/O declarations.",
+      "instruction_reference": {
+        "document": "exams/2023/original.pdf",
+        "page": 1,
+        "quote": "Please download the template file DSD.v"
+      },
+      "search_scope": "Provided local Downloads bundle; no DSD.v file was supplied/found.",
+      "limitation": "The rewritten complete RTL is supplied and runs independently, but cannot establish byte-exact compatibility with unavailable template declarations. It is not labelled the original DSD.v."
+    },
+    {
+      "year": 2024,
+      "name": "DSD.v",
+      "status": "not_provided",
+      "purpose": "Original instructor template containing required question I/O declarations.",
+      "instruction_reference": {
+        "document": "exams/2024/original.pdf",
+        "page": 1,
+        "quote": "Please download the template file DSD.v"
+      },
+      "search_scope": "Provided local Downloads bundle; no DSD.v file was supplied/found.",
+      "limitation": "The rewritten complete RTL is supplied and runs independently, but cannot establish byte-exact compatibility with unavailable template declarations. It is not labelled the original DSD.v."
+    }
+  ],
+  "provided_original_external_companion_count": 0
+}
